@@ -1,17 +1,109 @@
+{% extends 'core/base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>서랍장 안</title>
+    <style>
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%; /* Could be more or less, depending on screen size */
+        }
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    {% if not item %}
+    {% if not key %}
     <form method="POST">{% csrf_token %}
         <input type='hidden' name='array_info' value="Array_info">
-        <input type="image" src="" alt='배열정보사진'>
+        <input type="image" class='btn' src="/static/구겨진 종이.jpg" alt='배열정보사진'>
     </form>
+    <div class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>                         
+          <p>구겨진 종이</p>
+        </div>
+    </div>
     {% endif %}
     <a href="{% url 'desk' %}">뒤로가기</a>
+
+    {% for i in items %}
+    <div>
+        <p><img src="{{ i.photo.url }}" alt="사진" width="20" height="20">{{ i.name }} : {{ i.bio }} </p>
+    </div>
+    {% endfor %}
 </body>
+
+<script>
+    var modals = document.getElementsByClassName("modal");
+    // Modal을 띄우는 클래스 이름을 가져옵니다.
+    var btns = document.getElementsByClassName("btn");
+    // Modal을 닫는 close 클래스를 가져옵니다.
+    var spanes = document.getElementsByClassName("close");
+    var funcs = [];
+     
+    // Modal을 띄우고 닫는 클릭 이벤트를 정의한 함수
+    function Modal(num) {
+      return function() {
+        // 해당 클래스의 내용을 클릭하면 Modal을 띄웁니다.
+        btns[num].onclick =  function() {
+            modals[num].style.display = "block";
+            console.log(num);
+        };
+     
+        // <span> 태그(X 버튼)를 클릭하면 Modal이 닫습니다.
+        spanes[num].onclick = function() {
+            modals[num].style.display = "none";
+        };
+      };
+    }
+     
+    // 원하는 Modal 수만큼 Modal 함수를 호출해서 funcs 함수에 정의합니다.
+    for(var i = 0; i < btns.length; i++) {
+      funcs[i] = Modal(i);
+    }
+     
+    // 원하는 Modal 수만큼 funcs 함수를 호출합니다.
+    for(var j = 0; j < btns.length; j++) {
+      funcs[j]();
+    }
+     
+    // Modal 영역 밖을 클릭하면 Modal을 닫습니다.
+    window.onclick = function(event) {
+      if (event.target.className == "modal") {
+          event.target.style.display = "none";
+      }
+    };
+</script>
 </html>
+{% endblock %}

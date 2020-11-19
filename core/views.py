@@ -2,11 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ItemForm
 from .models import Item, User
 
-
 # Create your views here.
-
 def home(request):
-    ctx = {}
+    items = Item.objects.all()
+    ctx = {'items':items}
     if request.user:
         ctx['user'] = request.user
     queryset = Item.objects.all()
@@ -44,16 +43,17 @@ def example(request):
     return render(request, 'core/sample.html', ctx)
 
 def door(request):
-    ctx = {}
+    items = Item.objects.all()
+    ctx = {'items':items}
     if request.method == 'POST': #화분 클릭했을 때, 열쇠를 아이템모델에 넣어주는 작업
-        print(request.POST)
         if request.POST['Key'] == 'key':
             form = ItemForm()
             item = form.save(commit=False)
-            item.name = 'key'
+            item.name = '열쇠'
             item.bio = '무언가를 열 수 있는 키'
             item.status = 'AC'
             item.owner = request.user
+            item.photo = 'key.jpg'
             item.save()
             return redirect('door')
 
@@ -68,9 +68,9 @@ def door(request):
         if User.objects.filter(del_assistance=True):
             print('success2')
             ctx['del_assistance'] = User.objects.get(del_assistance=True)
-        if Item.objects.filter(name='key'):
+        if Item.objects.filter(name='열쇠'):
             print('success')
-            ctx['item'] = Item.objects.get(name='key')
+            ctx['key'] = Item.objects.get(name='열쇠')
         if User.objects.filter(open_hydrant=True):
             ctx['open_hydrant'] = True
         return render(request, 'core/door.html', ctx)
@@ -80,13 +80,15 @@ def record(request):
     return render(request, 'core/rank.html', ctx)
 
 def lab(request):
-    ctx = {}
+    items = Item.objects.all()
+    ctx = {'items':items}
     return render(request, 'core/lab.html', ctx)
 
 def desk(request):
-    ctx = {}
-    if Item.objects.filter(name='key'):
-        ctx['item'] = Item.objects.get(name='key')
+    items = Item.objects.all()
+    ctx = {'items':items}
+    if Item.objects.filter(name='열쇠'):
+        ctx['key'] = Item.objects.get(name='열쇠')
     return render(request, 'core/desk.html', ctx)
 
 def monitor(request):
@@ -108,7 +110,10 @@ def monitor(request):
 
 
 def drawer(request):
+    items = Item.objects.all()
+    ctx = {'items':items}
     if request.method == 'POST': #배열정보 획득
+        print(request.POST)
         if request.POST['array_info'] == 'Array_info':
             form = ItemForm()
             item = form.save(commit=False)
@@ -116,12 +121,12 @@ def drawer(request):
             item.bio = '이상한 내용들이 적혀있다.'
             item.status = 'AC'
             item.owner = request.user
+            item.photo = '구겨진_종이.jpg'
             item.save()
             return redirect('drawer')
     else:
-        ctx = {}
         if Item.objects.filter(name='구겨진 종이'):
-            ctx['item'] = Item.objects.get(name='구겨진 종이')
+            ctx['key'] = Item.objects.get(name='구겨진 종이')
         return render(request, 'core/drawer.html', ctx)
 
 def ending(request):
