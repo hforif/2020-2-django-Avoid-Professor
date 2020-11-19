@@ -1,0 +1,13 @@
+.title{
+    width:200px;
+    position:absolute; top:50px; left:50%; margin-left:-100px;
+    font-size:xx-large;
+}
+footer{
+    width:1000px;
+    position:absolute; top:550px; left:50%; margin-left:-500px;
+    display : block;
+}
+.row{
+    position:absolute; top:100px;
+}
