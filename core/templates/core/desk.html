@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>책상</title>
+</head>
+<body>
+    <img src="" alt="책상사진">
+    <a href="{% url 'monitor' %}"><img src="" alt="모니터"></a>
+    <img src="" alt="액자사진">
+    <a href="{% url 'drawer' %}">
+        {% if item %}
+        서랍
+        {% endif %}
+    </a>
+    <div></div>
+    <a href="{% url 'door' %}">뒤로가기</a>
+
+</body>
+</html>
