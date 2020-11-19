@@ -1,11 +1,9 @@
-{% extends 'core/base.html' %}
-{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>문 앞</title>
+    <title>Document</title>
     <style>
         .modal {
             display: none; /* Hidden by default */
@@ -40,60 +38,55 @@
             text-decoration: none;
             cursor: pointer;
         }
+        
     </style>
 </head>
 <body>
-    <a href="{% url 'lab' %}">연구실</a>
-    {% if not key %}
-    <form method="POST">{% csrf_token %}
-        <input type='hidden' name='Key' value="key">
-        <input type="image" class="btn" src="/static/화분.jpg" alt="화분" width="50" height="70">
+        <!-- 첫 번째 Modal을 여는 클래스 -->
+        <h1 class="btn">MODAL_1</h1>
+     
+        <!-- 첫 번째 Modal -->
         <div class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>                         
-              <p><img src="{{ key.photo.url }}" alt="사진" width="20" height="20">열쇠획득</p>
-            </div>
+     
+          <!-- 첫 번째 Modal의 내용 -->
+          <div class="modal-content">
+            <span class="close">&times;</span>                         
+            <p>첫 번째 Modal</p>
+          </div>
         </div>
-    </form>
-    {% endif %}
-    {% if key %}
-    <form method="POST">{% csrf_token %}
-        <img src="/static/화분.jpg" alt="화분" width="50" height="70">
-    </form>
-    {% endif %}
-
-    {% if not del_assistance %}
-    <input type="image" class="btn" src="/static/조교.jpg" alt="조교사진" width="130" height="300">
-    <div class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>                         
-          <p>으어어어...</p>
+     
+        <hr>
+        <!-- 두 번째 Modal을 여는 클래스 -->
+        <h1 class="btn">MODAL_2</h1>
+     
+        <!-- 두 번째 Modal -->
+        <div class="modal">
+     
+          <!-- 두 번째 Modal의 내용 -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>두 번째 Modal</p>
+          </div>
         </div>
-    </div>
-    {% endif %}
-    
-    {% if del_assistance %}
-    {% if not open_hydrant %}
-    <form method="POST">{% csrf_token %}
-        <input type='hidden' name='Key' value="notkey">
-        <input type='hidden' name='Hydrant' value="hydrant">
-        <input type="image" src="/static/소화전.jpg" alt="닫힌소화전" width="300" height="400">
-    </form>
-    {% endif %}
-
-    {% if open_hydrant %}
-    <img src="/static/열린소화전.jpg" alt="열린소화전" width="300" height="400">
-    <a href="{% url 'ending' %}"><img src="/static/시험지.jpg" alt="시험지" width="50" height="70"></a>
-    {% endif %}
-    {% endif %}
-
-    {% for i in items %}
-    <div>
-        <p><img src="{{ i.photo.url }}" alt="사진" width="20" height="20">{{ i.name }} : {{ i.bio }} </p>
-    </div>
-    {% endfor %}
-
+     
+        <hr>
+        <!-- 세 번째 Modal을 여는 클래스 -->
+        <h1 class="btn">MODAL_3</h1>
+     
+        <!-- 세 번째 Modal -->
+        <div class="modal">
+     
+          <!-- 세 번째 Modal의 내용 -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>세 번째 Modal</p>
+          </div>
+        </div>
+     
+       
+     
 <script>
+// Modal을 가져옵니다.
 var modals = document.getElementsByClassName("modal");
 // Modal을 띄우는 클래스 이름을 가져옵니다.
 var btns = document.getElementsByClassName("btn");
@@ -134,6 +127,7 @@ window.onclick = function(event) {
   }
 };
 </script>
+  
+
 </body>
 </html>
-{% endblock %}
