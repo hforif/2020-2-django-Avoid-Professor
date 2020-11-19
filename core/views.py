@@ -61,7 +61,7 @@ def door(request):
 
         elif request.POST['Hydrant'] == 'hydrant':
             if not User.objects.filter(open_hydrant=True):
-                user = User.objects.get(open_hydrant=False) #정보확인 > 조교삭제
+                user = User.objects.filter(open_hydrant=False)[0] #정보확인 > 조교삭제
                 user.open_hydrant = True
                 user.save()
             return redirect('door')
@@ -69,7 +69,7 @@ def door(request):
     else:
         if User.objects.filter(del_assistance=True):
             print('success2')
-            ctx['del_assistance'] = User.objects.get(del_assistance=True)
+            ctx['del_assistance'] = User.objects.filter(del_assistance=True)[0]
         if Item.objects.filter(name='열쇠'):
             print('success')
             ctx['key'] = Item.objects.get(name='열쇠')
