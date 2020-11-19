@@ -10,10 +10,12 @@ def home(request):
         ctx['user'] = request.user
     queryset = Item.objects.all()
     queryset.delete() #시작화면에 오면 아이템 초기화
-    user = User.objects.get(id=2)
-    user.del_assistance = False
-    user.open_hydrant = False
-    user.save()
+    if User.objects.filter(del_assistance=True):
+        user = User.objects.filter(del_assistance=True)
+        for i in range(len(user)):
+            user[i].del_assistance = False
+            user[i].open_hydrant = False
+            user[i].save()
     return render(request, 'core/home.html', ctx)
 
 def search_window(request):
@@ -96,14 +98,15 @@ def monitor(request):
     if request.method =='POST': 
         if request.POST['password'] == '12345678':
             if not User.objects.filter(del_assistance=True):
-                user = User.objects.get(del_assistance=False) #정보확인 > 조교삭제
-                user.del_assistance = True
-                user.save()
+                user = User.objects.filter(del_assistance=False) #정보확인 > 조교삭제
+                for i in range(len(user)):
+                    user[i].del_assistance = True
+                    user[i].save()
                 return render(request, 'core/screen.html', ctx)
             else:
                 return render(request, 'core/screen.html', ctx)
         else:
-            return redirect('monitor')        
+            return redirect('monitor')
     else:
         print(User.objects.filter(del_assistance=True))
         return render(request, 'core/monitor.html', ctx)
