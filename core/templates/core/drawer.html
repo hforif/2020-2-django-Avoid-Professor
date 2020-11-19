@@ -57,11 +57,6 @@
     {% endif %}
     <a href="{% url 'desk' %}">뒤로가기</a>
 
-    {% for i in items %}
-    <div>
-        <p><img src="{{ i.photo.url }}" alt="사진" width="20" height="20">{{ i.name }} : {{ i.bio }} </p>
-    </div>
-    {% endfor %}
 </body>
 
 <script>

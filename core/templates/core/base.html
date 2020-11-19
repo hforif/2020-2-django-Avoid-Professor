@@ -43,10 +43,11 @@
     </div>
     <h5>아이템 목록</h5>
     <table class="table table-bordered">
-        {% for item in items %}
-            <tr>
-                <td> {{ item.photo }}</td>
-            </tr>
+  
+        {% for i in items %}
+        <tr>
+            <td><img src="{{ i.photo.url }}" alt="사진" width="20" height="20">{{ i.name }} : {{ i.bio }} </td>
+        </tr>
         {% endfor %}
     </table>
 </footer>
