@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문 앞</title>
+</head>
+<body>
+    <a href="{% url 'lab' %}">연구실</a>
+    {% if not item %}
+    <form method="POST">{% csrf_token %}
+        <input type='hidden' name='Key' value="key">
+        <input type="image" src="" alt="화분">
+    </form>
+    {% endif %}
+
+    {% if not del_assistance %}
+    <img src="" alt="조교사진">
+    <form>
+        대화모달창
+    </form>
+    {% endif %}
+
+    {% if del_assistance %}
+    {% if not open_hydrant %}
+    <form method="POST">{% csrf_token %}
+        <input type='hidden' name='Key' value="notkey">
+        <input type='hidden' name='Hydrant' value="hydrant">
+        <input type="image" src="" alt="닫힌소화전">
+    </form>
+    {% endif %}
+
+    {% if open_hydrant %}
+    <img src="" alt="열린소화전">
+    <a href="{% url 'ending' %}"><img src="" atl="시험지"><img src="" alt="시험지"></a>
+    {% endif %}
+    {% endif %}
+
+    <a href="{% url 'home' %}">뒤로가기</a>
+
+
+</body>
+</html>

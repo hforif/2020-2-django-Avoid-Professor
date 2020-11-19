@@ -8,6 +8,8 @@ class User(AbstractUser):
     name = models.CharField(max_length=50)
     subject = models.CharField(max_length=50, default='사랑의 실천')
     professor = models.CharField(max_length=50, default='송영수')
+    del_assistance = models.BooleanField(default=False)
+    open_hydrant = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.name}: {self.subject}, {self.professor}'

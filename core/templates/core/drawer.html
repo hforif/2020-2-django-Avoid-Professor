@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서랍장 안</title>
+</head>
+<body>
+    {% if not item %}
+    <form method="POST">{% csrf_token %}
+        <input type='hidden' name='array_info' value="Array_info">
+        <input type="image" src="" alt='배열정보사진'>
+    </form>
+    {% endif %}
+    <a href="{% url 'desk' %}">뒤로가기</a>
+</body>
+</html>
