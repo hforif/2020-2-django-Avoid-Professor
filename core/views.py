@@ -141,12 +141,18 @@ def ending(request):
 
 ################################################
 def bookshelf(request) :
-    return render(request, 'core/bookshelf.html')
+    items = Item.objects.all()
+    ctx = {'items':items}
+    return render(request, 'core/bookshelf.html', ctx)
 
 def diary(request) :
-    return render(request, 'core/diary.html')
+    items = Item.objects.all()
+    ctx = {'items':items}
+    return render(request, 'core/diary.html', ctx)
 
 def corner(request) :
+    items = Item.objects.all()
+    ctx = {'items':items}
     if request.method == 'POST' :
         if request.POST['post'] == 'trashcan' :
             form = ItemForm()
@@ -171,7 +177,6 @@ def corner(request) :
             item.save()
             return redirect('corner')
     else :
-        ctx = {}
         if Item.objects.filter(name='교수님의 무지개색 양말') :
             ctx['socks'] = Item.objects.get(name='교수님의 무지개색 양말')
         if Item.objects.filter(name='key2'):
