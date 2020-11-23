@@ -12,5 +12,8 @@ urlpatterns = [
     path('desk', views.desk, name='desk'),
     path('monitor', views.monitor, name='monitor'),
     path('drawer', views.drawer, name='drawer'),
+    path('bookshelf', views.bookshelf, name='bookshelf'),
+    path('diary', views.diary, name='diary'),
+    path('corner', views.corner, name='corner'),
 
 ]

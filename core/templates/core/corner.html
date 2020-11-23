@@ -1,0 +1,55 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구석</title>
+    <style>
+        div.background {
+            background-image: url("/static/corner_background.jpg");
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'lab' %}">뒤로가기</a>
+
+    {% if not socks %}
+    <form method="POST">{% csrf_token %}
+        <input type='hidden' name='post' value="trashcan">
+        <input type="image" src="/static/trashcan2.png" alt='쓰레기통'>
+    </form>
+    <div class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>                         
+          <p><img src="/static/구겨진 종이.jpg" alt="사진" width="20" height="20">구겨진 종이</p>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if socks %}
+    <img  src="/static/trashcan2.png" alt='쓰레기통'>
+    {% endif %}
+
+    {% if not key2 %}
+    <form method="POST">{% csrf_token %}
+        <input type='hidden' name='post' value="hanger">
+        <input type="image" src="/static/hanger.png" alt='옷걸이'>
+    </form>
+    <div class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>                         
+          <p><img src="/static/key2.jpg" alt="사진" width="20" height="20">열쇠2</p>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if key2 %}
+    <img  src="/static/hanger.png" alt='옷걸이'>
+    {% endif %}
+    
+</body>
+</html>
+{% endblock %}
+

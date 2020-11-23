@@ -7,7 +7,7 @@ def home(request):
     items = Item.objects.all()
     ctx = {'items':items}
     if request.user:
-        ctx['user'] = request.user
+        ctx['user'] = User.objects.order_by('-id')[0].name
     queryset = Item.objects.all()
     queryset.delete() #시작화면에 오면 아이템 초기화
     if User.objects.filter(del_assistance=True):
@@ -54,22 +54,23 @@ def door(request):
             item.name = '열쇠'
             item.bio = '무언가를 열 수 있는 키'
             item.status = 'AC'
-            item.owner = request.user
+            item.owner = User.objects.order_by('-id')[0]
             item.photo = 'key.jpg'
             item.save()
             return redirect('door')
 
         elif request.POST['Hydrant'] == 'hydrant':
             if not User.objects.filter(open_hydrant=True):
-                user = User.objects.get(open_hydrant=False) #정보확인 > 조교삭제
-                user.open_hydrant = True
-                user.save()
+                users = User.objects.filter(open_hydrant=False) #정보확인 > 조교삭제
+                for i in range(len(users)):
+                    users[i].open_hydrant = True
+                    users[i].save()
             return redirect('door')
     
     else:
         if User.objects.filter(del_assistance=True):
             print('success2')
-            ctx['del_assistance'] = User.objects.get(del_assistance=True)
+            ctx['del_assistance'] = User.objects.filter(del_assistance=True)[0]
         if Item.objects.filter(name='열쇠'):
             print('success')
             ctx['key'] = Item.objects.get(name='열쇠')
@@ -100,7 +101,9 @@ def monitor(request):
             if not User.objects.filter(del_assistance=True):
                 user = User.objects.filter(del_assistance=False) #정보확인 > 조교삭제
                 for i in range(len(user)):
+                    print(user[i].del_assistance)
                     user[i].del_assistance = True
+                    print(user[i].del_assistance)
                     user[i].save()
                 return render(request, 'core/screen.html', ctx)
             else:
@@ -123,7 +126,7 @@ def drawer(request):
             item.name = '구겨진 종이'
             item.bio = '이상한 내용들이 적혀있다.'
             item.status = 'AC'
-            item.owner = request.user
+            item.owner = User.objects.order_by('-id')[0]
             item.photo = '구겨진_종이.jpg'
             item.save()
             return redirect('drawer')
@@ -134,3 +137,43 @@ def drawer(request):
 
 def ending(request):
     return render(request, 'core/ending.html')
+
+
+################################################
+def bookshelf(request) :
+    return render(request, 'core/bookshelf.html')
+
+def diary(request) :
+    return render(request, 'core/diary.html')
+
+def corner(request) :
+    if request.method == 'POST' :
+        if request.POST['post'] == 'trashcan' :
+            form = ItemForm()
+            item = form.save(commit=False)
+            item.name = '교수님의 무지개색 양말'
+            item.bio = '크크 이게 도움을 줄 거라고 생각하나?!'
+            item.status = 'AC'
+            item.owner = User.objects.order_by('-id')[0]
+            item.photo = 'rainbowsocks.jpg'
+            item.save()
+            return redirect('corner')
+
+        elif request.POST['post'] == 'hanger' :
+            print(request.POST)
+            form = ItemForm()
+            item = form.save(commit=False)
+            item.name = 'key2'
+            item.bio = '서랍을 열 수 있는 열쇠'
+            item.status = 'AC'
+            item.owner = User.objects.order_by('-id')[0]
+            item.photo = 'key2.jpg'
+            item.save()
+            return redirect('corner')
+    else :
+        ctx = {}
+        if Item.objects.filter(name='교수님의 무지개색 양말') :
+            ctx['socks'] = Item.objects.get(name='교수님의 무지개색 양말')
+        if Item.objects.filter(name='key2'):
+            ctx['key2'] = Item.objects.get(name='key2')
+        return render(request, 'core/corner.html', ctx)
