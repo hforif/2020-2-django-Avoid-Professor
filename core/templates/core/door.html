@@ -7,38 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문 앞</title>
     <style>
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 50%; /* Could be more or less, depending on screen size */
-        }
-        /* The Close Button */
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+        div.background {
+            background-image: url("/static/복도.jpg");
         }
     </style>
 </head>
@@ -47,23 +17,23 @@
     {% if not key %}
     <form method="POST">{% csrf_token %}
         <input type='hidden' name='Key' value="key">
-        <input type="image" class="btn" src="/static/화분.jpg" alt="화분" width="50" height="70">
+        <input type="image" class="btn" src="/static/화분.png" alt="화분" width="100" height="130">
         <div class="modal">
             <div class="modal-content">
               <span class="close">&times;</span>                         
-              <p><img src="{{ key.photo.url }}" alt="사진" width="20" height="20">열쇠획득</p>
+              <p><img src="/static/key.jpg" alt="사진" width="20" height="20">열쇠획득</p>
             </div>
         </div>
     </form>
     {% endif %}
     {% if key %}
     <form method="POST">{% csrf_token %}
-        <img src="/static/화분.jpg" alt="화분" width="50" height="70">
+        <img src="/static/화분.png" alt="화분" width="50" height="70">
     </form>
     {% endif %}
 
     {% if not del_assistance %}
-    <input type="image" class="btn" src="/static/조교.jpg" alt="조교사진" width="130" height="300">
+    <input type="image" class="btn" src="/static/조교.png" alt="조교사진" width="200" height="400">
     <div class="modal">
         <div class="modal-content">
           <span class="close">&times;</span>                         
@@ -86,48 +56,6 @@
     <a href="{% url 'ending' %}"><img src="/static/시험지.jpg" alt="시험지" width="50" height="70"></a>
     {% endif %}
     {% endif %}
-
-<script>
-var modals = document.getElementsByClassName("modal");
-// Modal을 띄우는 클래스 이름을 가져옵니다.
-var btns = document.getElementsByClassName("btn");
-// Modal을 닫는 close 클래스를 가져옵니다.
-var spanes = document.getElementsByClassName("close");
-var funcs = [];
- 
-// Modal을 띄우고 닫는 클릭 이벤트를 정의한 함수
-function Modal(num) {
-  return function() {
-    // 해당 클래스의 내용을 클릭하면 Modal을 띄웁니다.
-    btns[num].onclick =  function() {
-        modals[num].style.display = "block";
-        console.log(num);
-    };
- 
-    // <span> 태그(X 버튼)를 클릭하면 Modal이 닫습니다.
-    spanes[num].onclick = function() {
-        modals[num].style.display = "none";
-    };
-  };
-}
- 
-// 원하는 Modal 수만큼 Modal 함수를 호출해서 funcs 함수에 정의합니다.
-for(var i = 0; i < btns.length; i++) {
-  funcs[i] = Modal(i);
-}
- 
-// 원하는 Modal 수만큼 funcs 함수를 호출합니다.
-for(var j = 0; j < btns.length; j++) {
-  funcs[j]();
-}
- 
-// Modal 영역 밖을 클릭하면 Modal을 닫습니다.
-window.onclick = function(event) {
-  if (event.target.className == "modal") {
-      event.target.style.display = "none";
-  }
-};
-</script>
 </body>
 </html>
 {% endblock %}

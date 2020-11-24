@@ -6,12 +6,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>연구실 안</title>
+    <style>
+        div.background {
+            background-image: url("/static/연구실.jpg");
+        }
+    </style>
 </head>
 <body>
-    <a href="{% url 'desk' %}"><img src="/static/연구실.jpg" alt="책상"></a>
+    <a href="{% url 'desk' %}">책상</a>
     <div></div>
-    <a href="{% url 'door' %}">연구실 나가기</a>
 
+    <a href="{% url 'bookshelf' %}"><img src="" alt="책장"></a>
+    <a href="{% url 'corner' %}"><img src="" alt="구석"></a>
+
+    <a href="{% url 'door' %}">연구실 나가기</a>
 
 </body>
 </html>
