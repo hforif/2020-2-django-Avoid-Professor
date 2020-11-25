@@ -203,7 +203,7 @@ footer {
 #books{
     position: absolute;
     left:40%;
-    top:27%;
+    top:25%;
 }
 /*--------------------------------------------------------------
 # Diary
@@ -265,13 +265,13 @@ footer {
     position: absolute;
     width:330px;
     left:54.5%;
-    top:49%;
+    top:45%;
 }
 .frame{
     position: absolute;
     width:200px;
     left:30%;
-    top:50%;
+    top:45%;
 }
 /*--------------------------------------------------------------
 # Monitor
