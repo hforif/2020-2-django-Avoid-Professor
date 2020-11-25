@@ -10,14 +10,35 @@
         div.background {
             background-image: url("/static/복도.jpg");
         }
+        .flowerpot{
+            width:100px;
+            height:150px;
+            position:absolute;
+            right:86%;
+            bottom:14%;
+        }
+        #not_human{
+            width:170px;
+            hight:300px;
+            position:absolute;
+            right:73%;
+            bottom:12%;
+        }
+        #go_lab{
+            width:100px;
+            height:80px;
+            position: absolute;
+            right:67%;
+            bottom:15%;
+        }
     </style>
 </head>
 <body>
-    <a href="{% url 'lab' %}">연구실</a>
+    <a href="{% url 'lab' %}"><img id="go_lab" src="/static/화살표.png" alt="화살표"></a>
     {% if not key %}
     <form method="POST">{% csrf_token %}
         <input type='hidden' name='Key' value="key">
-        <input type="image" class="btn" src="/static/화분.png" alt="화분" width="100" height="130">
+        <input class="flowerpot" type="image" class="btn" src="/static/화분.png" alt="화분" width="50" height="70">
         <div class="modal">
             <div class="modal-content">
               <span class="close">&times;</span>                         
@@ -28,14 +49,14 @@
     {% endif %}
     {% if key %}
     <form method="POST">{% csrf_token %}
-        <img src="/static/화분.png" alt="화분" width="50" height="70">
+        <img class="flowerpot" src="/static/화분.png" alt="화분" width="50" height="70">
     </form>
     {% endif %}
 
     {% if not del_assistance %}
-    <input type="image" class="btn" src="/static/조교.png" alt="조교사진" width="200" height="400">
-    <div class="modal">
-        <div class="modal-content">
+    <input id="not_human" type="image" class="btn" src="/static/조교.png" alt="조교사진" >
+    <div class="modal" width:600px;s>
+        <div class="modal-content" >
           <span class="close">&times;</span>                         
           <p>으어어어...</p>
         </div>
