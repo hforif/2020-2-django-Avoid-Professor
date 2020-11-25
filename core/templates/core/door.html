@@ -1,44 +1,13 @@
 {% extends 'core/base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>문 앞</title>
-    <style>
-        div.background {
-            background-image: url("/static/복도.jpg");
-        }
-        .flowerpot{
-            width:100px;
-            height:150px;
-            position:absolute;
-            right:86%;
-            bottom:14%;
-        }
-        #not_human{
-            width:170px;
-            hight:300px;
-            position:absolute;
-            right:73%;
-            bottom:12%;
-        }
-        #go_lab{
-            width:100px;
-            height:80px;
-            position: absolute;
-            right:67%;
-            bottom:15%;
-        }
-    </style>
-</head>
-<body>
-    <a href="{% url 'lab' %}"><img id="go_lab" src="/static/화살표.png" alt="화살표"></a>
+
+
+<div class="door-background">
+    <a href="{% url 'lab' %}"><img id="go_lab" class="get-point" src="/static/화살표.png" alt="화살표"></a>
     {% if not key %}
     <form method="POST">{% csrf_token %}
         <input type='hidden' name='Key' value="key">
-        <input class="flowerpot" type="image" class="btn" src="/static/화분.png" alt="화분" width="50" height="70">
+        <input class="get-point flowerpot" type="image" class="btn" src="/static/화분.png" alt="화분" width="50" height="70">
         <div class="modal">
             <div class="modal-content">
               <span class="close">&times;</span>                         
@@ -49,12 +18,12 @@
     {% endif %}
     {% if key %}
     <form method="POST">{% csrf_token %}
-        <img class="flowerpot" src="/static/화분.png" alt="화분" width="50" height="70">
+        <img class="get-point flowerpot" src="/static/화분.png" alt="화분" width="50" height="70">
     </form>
     {% endif %}
 
     {% if not del_assistance %}
-    <input id="not_human" type="image" class="btn" src="/static/조교.png" alt="조교사진" >
+    <input id="not_human" type="image" class="get-point btn" src="/static/조교.png" alt="조교사진" >
     <div class="modal" width:600px;s>
         <div class="modal-content" >
           <span class="close">&times;</span>                         
@@ -77,6 +46,6 @@
     <a href="{% url 'ending' %}"><img src="/static/시험지.jpg" alt="시험지" width="50" height="70"></a>
     {% endif %}
     {% endif %}
-</body>
-</html>
+    </div>
+
 {% endblock %}

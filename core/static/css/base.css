@@ -1,39 +1,319 @@
-.title {
-    width: 200px;
-    position: absolute;
-    top: 50px;
-    left: 50%;
-    margin-left: -100px;
-    font-size: xx-large;
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+.container{
+    margin:20px 200px;
 }
-#status_check{
-    width:150px;
-    height:50px;
+.get-point:hover{
+    transition:0.5s;
+    transform:scale(1.1);
 }
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#page-header .title {
+    font-size: 60px;
+    text-align:center;
+    font-family: 'Black Han Sans', sans-serif;
+
+}
+#page-header .title h2{
+    font-size: 70px;
+    letter-spacing:5px;
+    color:#000;
+}
+#page-header .title:hover{
+    text-decoration:none;
+}
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
 footer {
     width: 1000px;
-    position: fixed;
+    position: static;
     bottom: 50px;
     margin-left: 200px;
+    
+    
     display: block;
 }
 
-.row {
-    position: absolute;
-    top: 100px;
+#status_check{
+    width:150px;
+    height:50px;
+    font-family: 'Black Han Sans', sans-serif;
+    letter-spacing:5px;
+    font-size:25px;
 }
 
-div .background {
-    background-image: url("/static/책상.png");
+#item .container h5{
+    font-family: 'Black Han Sans', sans-serif;
+    letter-spacing:5px;
+    font-size:30px;
+}
+
+/*--------------------------------------------------------------
+# Home
+--------------------------------------------------------------*/
+.home_container{
+ 
+    align-items: center;
+    width:100%;
+    padding:50px 50px;
+}
+.home_button {
+    
+    border:none;
+    color:white;
+    padding:16px 32px;
+    text-align:center;
+    font-size:16px;
+    float:left;
+    margin: 4px 8px;
+    opacity:0.6;
+    transition:0.3s;
+    text-decoration:none;
+    cursor:pointer;
+    border-radius:4px;
+    width:48%;
+    height:200px;
+    font-family: 'Black Han Sans', sans-serif;
+    color:#000;
+    font-size:40px;
+    
+
+}
+.button_start {
+    background-color:#f4511e;
+}
+.button_record{
+    background-color:#4bdabb;
+}
+
+.home_button:hover{
+    opacity:1;
+}
+
+/*--------------------------------------------------------------
+# Door
+--------------------------------------------------------------*/
+#content .door-background {
+    background-image: url("/static/복도.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     height: 450px;
     width: 1200px;
     position: center;
-    margin-right: 200px;
-    margin-left: 0px;
+    border:20px solid;
+    
 }
 
+.flowerpot{
+    width:100px;
+    height:150px;
+    position:absolute;
+    right:75%;
+    bottom:25%;
+}
+
+#not_human{
+    width:210px;
+    height:300px;
+    position:absolute;
+    right:60%;
+    bottom:23%;
+}
+#go_lab{
+    width:100px;
+    height:80px;
+    position: absolute;
+    right:45%;
+    bottom:25%;
+}
+
+/*--------------------------------------------------------------
+# Lab
+--------------------------------------------------------------*/
+
+.lab-background {
+    background-image: url("/static/연구실.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 450px;
+    width: 1200px;
+    position: center;
+    border:20px solid;
+}
+
+#see_desk {
+    right: 50%;
+    bottom: 45%;
+}
+
+#see_bookshelf {
+    left: 23%;
+    bottom: 60%;
+}
+
+#see_corner {
+    bottom: 30%;
+    left: 15%;
+}
+
+#go_out {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    transform:rotate(110deg);
+    bottom:25%;
+    left:30%;
+}
+
+#go_link{
+    transform:rotate(110deg);
+}
+
+.mag {
+    width: 70px;
+    height: 50px;
+    position: absolute;
+}
+
+/*--------------------------------------------------------------
+# Book Shelf
+--------------------------------------------------------------*/
+.bookshelf-background {
+    background-image: url("/static/bookshelf.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 450px;
+    width: 1200px;
+    position: center;
+    border:20px solid;
+}
+#shelf-pointer{
+    transform:rotate(180deg);
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top:50%
+    
+}
+#books{
+    position: absolute;
+    left:40%;
+    top:27%;
+}
+/*--------------------------------------------------------------
+# Diary
+--------------------------------------------------------------*/
+.diary-background {
+    background-image: url("/static/page.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 450px;
+    width: 1200px;
+    position: center;
+    border:20px solid;
+}
+.diary-background h5{
+    font-family: 'Hi Melody', cursive;
+}
+.stickman{
+    position: absolute;
+    left:35%;
+}
+
+
+/*--------------------------------------------------------------
+# Corner
+--------------------------------------------------------------*/
+.corner-background {
+    background-image: url("/static/corner_background.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 450px;
+    width: 1200px;
+    position: center;
+    border:20px solid;
+}
+#trashcan {
+    width:150px;
+    position: absolute;
+    left:40%;
+    top:45%;
+}
+#hanger{
+    position: absolute;
+    left:70%;
+    width:150px;
+}
+/*--------------------------------------------------------------
+# Desk
+--------------------------------------------------------------*/
+.desk-background{
+    background-image: url("/static/desk3.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 450px;
+    width: 1200px;
+    position: center;
+    border:20px solid;
+}
+#monitor{
+    position: absolute;
+    width:330px;
+    left:54.5%;
+    top:49%;
+}
+.frame{
+    position: absolute;
+    width:200px;
+    left:30%;
+    top:50%;
+}
+/*--------------------------------------------------------------
+# Monitor
+--------------------------------------------------------------*/
+.monitor-background {
+    background-image: url("/static/윈도우배경.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 450px;
+    width: 1200px;
+    position: center;
+    border:20px solid;
+}
+#password{
+    position: absolute;
+    left:40%;
+    top:50%;
+}
+/*--------------------------------------------------------------
+# Screen
+--------------------------------------------------------------*/
+.screen-background {
+    background-image: url("/static/monitorbg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 450px;
+    width: 1200px;
+    position: center;
+    border:20px solid;
+}
+#kakaotalk{
+    position: absolute;
+    width:250px;
+    left:60%;
+    top:30%;
+}
+#folder{
+    width:90px;
+}
+/*--------------------------------------------------------------
+# Modal
+--------------------------------------------------------------*/
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -55,6 +335,9 @@ div .background {
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
 }
+.modal-title{
+    font-family: 'Black Han Sans', sans-serif;
+}
 
 /* The Close Button */
 .close {
@@ -70,3 +353,5 @@ div .background {
     text-decoration: none;
     cursor: pointer;
 }
+
+

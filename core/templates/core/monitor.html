@@ -1,23 +1,14 @@
 {% extends 'core/base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>컴퓨터 화면</title>
-    <style>
-        div .background {
-        background-image: url("/static/기본배경.jpg");
-        }
-    </style>
-</head>
-<body>
-    <form method="post">
+<div class="monitor-background">
+    
+
+    <form method="post" id="password">
         {% csrf_token %}
-        <input type="text" size=8 name=password><button type="submit">입력</button>
+        <h5>잠금을 해제하려면 비밀번호를 입력하세요</h5><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" size=8 name=password>&nbsp;&nbsp;&nbsp;<button type="submit">입력</button>
     </form>
-    <a href="{% url 'desk' %}">뒤로가기</a>
-</body>
-</html>
+    <a href="{% url 'desk' %}"><img id="shelf-pointer" class="get-point" src="/static/화살표.png" alt="화살표"></a>
+
+</div>
 {% endblock %}
