@@ -11,8 +11,10 @@
 {% if user %}
     <h2>{{ user }}</h2>
 {% endif %}
-<a href="{% url 'search_window'%}"><button>시작</button></a>
-<a herf="{% url 'record' %}"><button>기록</button></a>
+<div class="home_container">
+    <a href="{% url 'search_window'%}"><button class="home_button button_start">시작</button></a>
+    <a herf="{% url 'record' %}"><button class="home_button button_record">기록</button></a>
+</div>
 
 </body>
 </html>
