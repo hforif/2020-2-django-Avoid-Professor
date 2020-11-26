@@ -353,9 +353,10 @@ footer {
 }
 #kakaotalk{
     position: absolute;
-    width:250px;
+    width:200px;
+    height:400px;
     left:60%;
-    top:30%;
+    top:22%;
 }
 #folder{
     width:90px;
