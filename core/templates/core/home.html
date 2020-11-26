@@ -1,13 +1,20 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>시작</title>
 </head>
 <body>
-<h1>HOME</h1>
 {% if user %}
     <h2>{{ user }}</h2>
 {% endif %}
+<a href="{% url 'search_window'%}"><button>시작</button></a>
+<a herf="{% url 'record' %}"><button>기록</button></a>
+
 </body>
 </html>
+
+{% endblock %}

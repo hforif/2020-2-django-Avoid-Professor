@@ -1,0 +1,60 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>연구실 안</title>
+        <style>
+            div.background {
+                background-image: url("/static/연구실.jpg");
+            }
+
+            #see_desk {
+                right: 55%;
+                bottom: 40%;
+            }
+
+            #see_bookshelf {
+                left: 10%;
+                bottom: 60%;
+            }
+
+            #see_corner {
+                bottom: 10%;
+                left: 15%;
+            }
+
+            #go_out {
+                position: absolute;
+                width: 60px;
+                height: 60px;
+                transform:rotate(110deg);
+                bottom:0%;
+                left:19%;
+            }
+
+            #go_link{
+                transform:rotate(110deg);
+            }
+
+            .mag {
+                width: 70px;
+                height: 50px;
+                position: absolute;
+            }
+
+        </style>
+    </head>
+    <body>
+    <a href="{% url 'desk' %}"><img class="mag" id="see_desk" src="/static/돋보기.png" alt="돋보기"></a>
+    <div></div>
+
+    <a href="{% url 'bookshelf' %}"><img class="mag" id="see_bookshelf" src="/static/돋보기.png" alt="돋보기"></a>
+    <a href="{% url 'corner' %}"><img class="mag" id="see_corner" src="/static/돋보기.png" alt="돋보기"></a>
+    <a id="go_link" href="{% url 'door' %}"><img id="go_out" src="/static/화살표.png" alt="화살표"></a>
+
+    </body>
+    </html>
+{% endblock %}

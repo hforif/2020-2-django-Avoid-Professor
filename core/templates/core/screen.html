@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>컴퓨터 화면</title>
+    <style>
+    div .background {
+        background-image: url("/static/기본배경.jpg");
+    }
+    </style>
+</head>
+<body>
+    <img src="/static/카톡.jpg" alt="카톡사진">
+    <a href="{% url 'desk' %}">뒤로가기</a>
+</body>
+</html>
+{% endblock %}
