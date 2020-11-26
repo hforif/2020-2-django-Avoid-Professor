@@ -1,5 +1,7 @@
 # Avoid Professor
 
+![avoid-professor](https://user-images.githubusercontent.com/52434876/100350691-9bc56a80-302d-11eb-9756-7b5e1481f001.png)
+
 ## made by
 ```
 김은민 - Css, 애니메이션 효과
