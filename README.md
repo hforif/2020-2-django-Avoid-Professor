@@ -1,5 +1,6 @@
 # Avoid Professor
 
+![image](https://user-images.githubusercontent.com/52434876/100350881-f068e580-302d-11eb-84c7-bb8689e6f9ed.png)
 ![avoid-professor](https://user-images.githubusercontent.com/52434876/100350691-9bc56a80-302d-11eb-9756-7b5e1481f001.png)
 
 ## made by
