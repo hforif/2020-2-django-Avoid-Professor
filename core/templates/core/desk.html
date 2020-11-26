@@ -1,23 +1,16 @@
 {% extends 'core/base.html' %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>책상</title>
-</head>
-<body>
-        <a href="{% url 'monitor' %}"><img src="" alt="모니터"></a>
-        <input type="image" id="myBtn" src="" alt="액자사진">
+<div class="desk-background">
+        <a href="{% url 'monitor' %}"><img id="monitor" src="/static/윈도우배경.jpg" alt="모니터"></a>
+        <input type="image" id="myBtn" class="frame get-point" src="/static/frame.png" alt="액자사진">
         <a href="{% url 'drawer' %}">
             {% if key %}
-            서랍
+            <img id="drawer-pointer" class="get-point" src="/static/화살표.png" alt="화살표">
             {% endif %}
         </a>
         <div></div>
-        <a href="{% url 'lab' %}">뒤로가기</a>
+        <a href="{% url 'lab' %}"><img id="shelf-pointer" class="get-point" src="/static/화살표.png" alt="화살표"></a>
 
     
         <div id="myModal" class="modal">
@@ -26,7 +19,7 @@
             <img src='/static/생일사진.jpg' alt='가족사진' width="300" height="300">
           </div>
     </div>  
-
+</div>
 
 <script>
          // Get the modal
@@ -51,6 +44,5 @@ window.onclick = function(event) {
     }
 }
 </script>
-</body>
-</html>
+
 {% endblock %}

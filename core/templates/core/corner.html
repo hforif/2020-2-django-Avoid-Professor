@@ -1,24 +1,12 @@
 {% extends 'core/base.html' %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>구석</title>
-    <style>
-        div.background {
-            background-image: url("/static/corner_background.jpg");
-        }
-    </style>
-</head>
-<body>
-    <a href="{% url 'lab' %}">뒤로가기</a>
+<div class="corner-background">
+    <a href="{% url 'lab' %}"><img id="shelf-pointer" class="get-point" src="/static/화살표.png" alt="화살표"></a>
 
     {% if not socks %}
     <form method="POST">{% csrf_token %}
         <input type='hidden' name='post' value="trashcan">
-        <input type="image" class="btn"  src="/static/trashcan2.png" alt='쓰레기통'>
+        <input type="image" id="trashcan" class="get-point btn"  src="/static/trashcan3.png" alt='쓰레기통'>
     </form>
     <div class="modal">
         <div class="modal-content">
@@ -29,13 +17,13 @@
     {% endif %}
 
     {% if socks %}
-    <img  src="/static/trashcan2.png" alt='쓰레기통'>
+    <img id="trashcan" src="/static/trashcan3.png" alt='쓰레기통'>
     {% endif %}
 
     {% if not key2 %}
     <form method="POST">{% csrf_token %}
         <input type='hidden' name='post' value="hanger">
-        <input type="image" class="btn" src="/static/hanger.png" alt='옷걸이'>
+        <input type="image" id="hanger" class="get-point btn" src="/static/hanger.png" alt='옷걸이'>
     </form>
     <div class="modal">
         <div class="modal-content">
@@ -46,10 +34,8 @@
     {% endif %}
 
     {% if key2 %}
-    <img  src="/static/hanger.png" alt='옷걸이'>
+    <img id="hanger" src="/static/hanger.png" alt='옷걸이'>
     {% endif %}
-    
-</body>
-</html>
+</div>
 {% endblock %}
 
