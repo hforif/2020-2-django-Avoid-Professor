@@ -131,6 +131,29 @@ footer {
     right:45%;
     bottom:25%;
 }
+#fusebox{
+    position: absolute;
+    left:70%;
+    top:30%;
+}
+#papersheets {
+    position: absolute;
+    left:70%;
+    top:70%; 
+    animation-duration:1s;
+    animation-name:fall;
+}
+@keyframes fall{
+    from{
+        left:70%;
+        top:30%;
+    }
+    to{
+        left:70%;
+        top:70%;
+    }
+}
+
 
 /*--------------------------------------------------------------
 # Lab
@@ -265,13 +288,39 @@ footer {
     position: absolute;
     width:330px;
     left:54.5%;
-    top:45%;
+    top:49%;
 }
 .frame{
     position: absolute;
     width:200px;
     left:30%;
-    top:45%;
+    top:49%;
+}
+#drawer-pointer{
+    transform:rotate(90deg);
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left:25%;
+    top:69%;
+}
+/*--------------------------------------------------------------
+# Drawer
+--------------------------------------------------------------*/
+.drawer-background{
+    background-image: url("/static/drawer.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 450px;
+    width: 1200px;
+    position: center;
+    border:20px solid;
+}
+#paperball{
+    position: absolute;
+    width:200px;
+    left:50%;
+    top:40%;
 }
 /*--------------------------------------------------------------
 # Monitor
@@ -310,6 +359,25 @@ footer {
 }
 #folder{
     width:90px;
+}
+/*--------------------------------------------------------------
+# Ending
+--------------------------------------------------------------*/
+.ending-background{
+    background-image:url("/static/woah.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 450px;
+    width: 1200px;
+    position: center;
+    border:20px solid;
+}
+.ending-background h1{
+    position: absolute;
+    left:45%;
+    top:40%;
+    font-size:120px;
+    text-shadow:5px 5px 5px #fbff2b;
 }
 /*--------------------------------------------------------------
 # Modal

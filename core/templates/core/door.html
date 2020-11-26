@@ -37,13 +37,13 @@
     <form method="POST">{% csrf_token %}
         <input type='hidden' name='Key' value="notkey">
         <input type='hidden' name='Hydrant' value="hydrant">
-        <input type="image" src="/static/소화전.jpg" alt="닫힌소화전" width="300" height="400">
+        <input type="image" id="fusebox" class="get-point" src="/static/fuseboxclosed.png" alt="닫힌소화전" width="200">
     </form>
     {% endif %}
 
     {% if open_hydrant %}
-    <img src="/static/열린소화전.jpg" alt="열린소화전" width="300" height="400">
-    <a href="{% url 'ending' %}"><img src="/static/시험지.jpg" alt="시험지" width="50" height="70"></a>
+    <img src="/static/fuseboxclosed.png" id="fusebox" alt="열린소화전" width="200">
+    <a href="{% url 'ending' %}"><img src="/static/papersheets.png" id="papersheets" alt="시험지" width="100"></a>
     {% endif %}
     {% endif %}
     </div>
